@@ -1,4 +1,4 @@
-@import "_base";
-@import "_sharedClasses";
-@import "_searchEntry";
-@import "_searchResults";
+@use 'base';
+@use 'sharedClasses';
+@use 'searchEntry';
+@use 'searchResults';

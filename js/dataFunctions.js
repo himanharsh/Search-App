@@ -1,7 +1,12 @@
 export const getSearchTerm = () => {
-  const rawSearchTerm = document.getElementById("search").value.trim();
+  // removing whitespaces from front and back
+  const rawSearchTerm = document.getElementById('search').value.trim();
+
+  // converting multiple spaces to single space
   const regex = /[ ]{2,}/gi;
-  const searchTerm = rawSearchTerm.replaceAll(regex, " ");
+  const searchTerm = rawSearchTerm.replaceAll(regex, ' ');
+  // converting multiple spaces to single space
+
   return searchTerm;
 };
 
@@ -9,8 +14,8 @@ export const retrieveSearchResults = async (searchTerm) => {
   const wikiSearchString = getWikiSearchString(searchTerm);
   const wikiSearchResults = await requestData(wikiSearchString);
   let resultArray = [];
-  if (wikiSearchResults.hasOwnProperty("query")) {
-    resultArray = processWikiResults(wikiSearchResults.query.pages);
+  if (wikiSearchResults.hasOwnProperty('query')) {
+    resultArray = processWikiResults(wikiSearchResults.query.pages); // parameter is still an object
   }
   return resultArray;
 };
@@ -23,6 +28,7 @@ const getWikiSearchString = (searchTerm) => {
 };
 
 const getMaxChars = () => {
+  // to find width of the screen in pixels
   const width = window.innerWidth || document.body.clientWidth;
   let maxChars;
   if (width < 414) maxChars = 65;
@@ -45,16 +51,16 @@ const processWikiResults = (results) => {
   const resultArray = [];
   Object.keys(results).forEach((key) => {
     const id = key;
-    const title = results[key].title;
+    const title = results[key].title; // available in firefox json raw header
     const text = results[key].extract;
-    const img = results[key].hasOwnProperty("thumbnail")
+    const img = results[key].hasOwnProperty('thumbnail')
       ? results[key].thumbnail.source
       : null;
     const item = {
       id: id,
       title: title,
       img: img,
-      text: text
+      text: text,
     };
     resultArray.push(item);
   });

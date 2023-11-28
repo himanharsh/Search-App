@@ -1,54 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dist/css/style.min.css" />
-    <script src="./js/main.js" type="module"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" type="module"></script>
     <title>SearchPedia</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <h1 class="offscreen">SearchPedia A Wikipedia Powered Search Engine</h1>
-        <section class="searchEntry">
-            <h2 class="offscreen">Search Term Entry</h2>
-            <div class="logo" aria-hidden="true">
-                <span class="blue">S</span>
-                <span class="red">e</span>
-                <span class="yellow">a</span>
-                <span class="blue">r</span>
-                <span class="green">c</span>
-                <span class="red">h</span>
-                <span class="green">P</span>
-                <span class="blue">e</span>
-                <span class="red">d</span>
-                <span class="yellow">i</span>
-                <span class="blue">a</span>
+      <!-- for SEO, not for display -->
+      <h1 style="position: absolute; left: -10000px">
+        SearchPedia - A Wikipedia Powered Search Engine.
+      </h1>
+      <!-- for SEO, not for display -->
+
+      <section class="searchEntry">
+        <div class="logo">
+          <span class="blue">S</span>
+          <span class="red">e</span>
+          <span class="yellow">a</span>
+          <span class="blue">r</span>
+          <span class="green">c</span>
+          <span class="red">h</span>
+          <span class="green">P</span>
+          <span class="blue">e</span>
+          <span class="red">d</span>
+          <span class="yellow">i</span>
+          <span class="blue">a</span>
+        </div>
+        <form id="searchBar" class="searchBar">
+          <input type="text" id="search" autocomplete="off">
+          <div id="clear" class="none button clear" tabindex="0">
+            <!-- for tabbing -->
+            <i class="fa-solid fa-x"></i>
+          </div>
+          <!-- tabindex is not required in button and input -->
+          <button id="searchButton" class="button searchButton" type="submit">
+            <i class="fas fa-search blue"></i>
+          </button>
+        </form>
+      </section>
+      <section class="results">
+        <div class="statsBar">
+          <div id="stats" class="stats"></div>
+        </div>
+        <div id="searchResults" class="searchResults">
+          <!-- <div class="resultItem">
+            <div class="resultTitle">
+              <a href="">Dachshund</a>
             </div>
-            <form id="searchBar" class="searchBar" role="search"> 
-                <label class="offscreen" for="search">Enter a search term or phrase</label>
-                <input id="search" type="text" autocomplete="off" role="searchbox" />
-                <div id="clear" class="none button clear" role="button" tabindex="0" aria-label="Clear search terms">
-                    <i class="fas fa-times"></i>
-                </div>
-                <button id="searchButton" class="button searchButton" type="submit" aria-label="Submit button">
-                    <i class="fas fa-search blue"></i>
-                </button>
-            </form>
-        </section>
-        <section class="results">
-            <h2 class="offscreen">Search Results</h2>
-            <div class="statsBar">
-                <div id="stats" class="stats" aria-live="assertive"></div>
+            <div class="resultContents">
+              <div class="resultImage">
+                <img src="" alt="Dachshund">
+              </div>
+              <div class="resultText">
+                <p class="resultDescription"></p>
+              </div>
             </div>
-            <div id="searchResults" class="searchResults"></div>
-        </section>
+          </div> -->
+        </div>
+      </section>
     </main>
     <footer>
-        <p><span aria-hidden="true">&lt;&lt;</span> Powered by <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> <span aria-hidden="true">&gt;&gt;</span></p>
+      <p>
+        &lt;&lt; Powered by
+        <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>
+        &gt;&gt;
+      </p>
     </footer>
-</body>
+  </body>
 </html>

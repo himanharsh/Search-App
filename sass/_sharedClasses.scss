@@ -1,34 +1,22 @@
+@use 'base';
+
 .blue {
-  color: $logo-blue;
+  color: base.$logo-blue;
 }
 
 .red {
-  color: $logo-red;
+  color: base.$logo-red;
 }
 
 .yellow {
-  color: $logo-yellow;
+  color: base.$logo-yellow;
 }
 
 .green {
-  color: $logo-green;
+  color: base.$logo-green;
 }
 
-.exclaim {
-  display: inline-block;
-  font-size: 2.5rem;
-  transform: rotate(12deg);
-  @include mq(768px) {
-    font-size: 5rem;
-  }
-}
-
-.offscreen {
-  position: absolute;
-  left: -10000px;
-}
-
-.none {
+.none { // for X button inside search bar
   display: none;
 }
 

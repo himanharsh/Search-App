@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+
 $search-bar-border: #e6e6e6;
 $stats-color: #70757a;
 $clear-button-color: #d9d9d9;
@@ -5,17 +7,19 @@ $background-color: #fff;
 $font-color: #000;
 $logo-blue: #4885ed;
 $logo-red: #db3236;
-$logo-yellow: #ffc107;
+$logo-yellow: #fcc107;
 $logo-green: #3cba54;
 $link-color: #1a0dab;
 $link-visited-color: #609;
 $link-outline-color: #000;
-$font-stack: "Roboto", Arial, sans-serif;
+$font-stack: 'Roboto', 'Arial', 'sans-serif';
 
+// '%' or placeholder selectors are used with extend, not independently.
 %flex {
   display: flex;
   align-items: center;
 }
+// '%' or placeholder selectors are used with extend, not independently.
 
 @mixin flexColumn {
   @extend %flex;
@@ -28,31 +32,37 @@ $font-stack: "Roboto", Arial, sans-serif;
   justify-content: center;
 }
 
+// practicing mobile first view for the first time
 @mixin mq($size) {
+  // starting with min-width for mobile-first, max-width for desktop first
+  /* When not using only, older browsers would interpret the query screen and (max-width: 500px) as screen, ignoring the remainder of the query, and applying its styles on all screens. */
   @media only screen and (min-width: $size) {
     @content;
   }
 }
 
+// CSS RESET
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+// CSS RESET
 
 html,
 body {
   background-color: $background-color;
   color: $font-color;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 100svh;
   font-family: $font-stack;
   font-size: 22px;
 }
 
 main {
   @include flexColumn;
-  min-height: calc(100vh - 60px);
+  // min-height simply means max-height can exceed, but viewport can't be smaller than min-height
+  min-height: calc(100vh - 60px); // subtracted for footer
 }
 
 footer {
@@ -66,13 +76,13 @@ footer {
     @include mq(768px) {
       font-size: 1rem;
     }
+  }
 
-    a {
-      color: $stats-color;
-    }
+  a {
+    color: $stats-color;
   }
 }
 
 img {
-  display: block;
+  display: block; // to remove white space below and above the image
 }
