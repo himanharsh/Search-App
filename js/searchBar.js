@@ -15,7 +15,7 @@ export const showClearTextButton = () => {
 };
 
 export const clearSearchText = (event) => {
-  event.preventDefault();
+  event.preventDefault(); // to be on safe side
   document.getElementById('search').value = '';
   const clear = document.getElementById('clear');
   clear.classList.add('none');
@@ -24,8 +24,10 @@ export const clearSearchText = (event) => {
 };
 
 export const clearPushListener = (event) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault();
+  if (event.key === 'Enter') {
+    event.preventDefault(); // to be on safe side
+    // tabbing through the page, when focus is on clear button, if Enter is pressed, then clear click event
+    // is fired
     document.getElementById('clear').click();
   }
 };

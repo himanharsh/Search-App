@@ -23,7 +23,7 @@ export const retrieveSearchResults = async (searchTerm) => {
 const getWikiSearchString = (searchTerm) => {
   const maxChars = getMaxChars();
   const rawSearchString = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${searchTerm}&gsrlimit=20&prop=pageimages|extracts&exchars=${maxChars}&exintro&explaintext&exlimit=max&format=json&origin=*`;
-  const searchString = encodeURI(rawSearchString);
+  const searchString = encodeURI(rawSearchString); // for eg - to replace space in URL with escape sequence
   return searchString;
 };
 
@@ -39,7 +39,9 @@ const getMaxChars = () => {
 
 const requestData = async (searchString) => {
   try {
+    // The Fetch API interface allows web browser to make HTTP requests to web servers.
     const response = await fetch(searchString);
+    /* despite the method being named json(), the result is not JSON but is instead the result of taking JSON as input and parsing it to produce a JavaScript object. */
     const data = await response.json();
     return data;
   } catch (err) {
@@ -51,7 +53,7 @@ const processWikiResults = (results) => {
   const resultArray = [];
   Object.keys(results).forEach((key) => {
     const id = key;
-    const title = results[key].title; // available in firefox json raw header
+    const title = results[key].title;
     const text = results[key].extract;
     const img = results[key].hasOwnProperty('thumbnail')
       ? results[key].thumbnail.source
